@@ -1,18 +1,18 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WPFCalculator
+namespace CalculaWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
-        readonly ViewModel vm;
+        readonly MainWindowViewModel vm;
 
         public MainWindow()
         {
-            vm = new ViewModel();
+            vm = new MainWindowViewModel();
             DataContext = vm;
 
             InitializeComponent();

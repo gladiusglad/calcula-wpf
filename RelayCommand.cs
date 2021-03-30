@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WPFCalculator
+namespace CalculaWPF
 {
     public class RelayCommand : ICommand
     {

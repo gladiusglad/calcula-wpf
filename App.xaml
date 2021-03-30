@@ -1,6 +1,6 @@
-﻿<Application x:Class="WPFCalculator.App"
+﻿<Application x:Class="CalculaWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPFCalculator"
+             xmlns:local="clr-namespace:CalculaWPF"
              StartupUri="MainWindow.xaml">
 </Application>

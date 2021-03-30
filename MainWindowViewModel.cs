@@ -5,25 +5,18 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace WPFCalculator
+namespace CalculaWPF
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public enum MessageColor
-        {
-            Normal,
-            Warning,
-            Unfocused
-        }
-
         private const string InvalidMessage = "Please enter a valid expression";
         private string expression, result, previousExpression, lastValidResult, calculateTime;
         private MessageColor color = MessageColor.Unfocused;
         private bool lockResult, noChangeSinceLock;
         private DateTimeOffset lastForceTime;
-        private Calculator calculator = new Calculator();
+        private readonly Calculator calculator = new();
 
-        public ViewModel()
+        public MainWindowViewModel()
         {
             CalculateCommand = new RelayCommand(ForceCalculate, o => true);
             ClearCommand = new RelayCommand(ClearExpression, o => true);
@@ -45,7 +38,7 @@ namespace WPFCalculator
             }
         }
 
-        public string Result 
+        public string Result
         {
             get => result;
             set
@@ -65,7 +58,8 @@ namespace WPFCalculator
             }
         }
 
-        public MessageColor Color { 
+        public MessageColor Color
+        {
             get => color;
             set
             {
@@ -121,6 +115,7 @@ namespace WPFCalculator
 
             if (exp.Length == 0)
             {
+                CalculateTime = "";
                 if (force)
                 {
                     SendInvalid();
@@ -179,7 +174,7 @@ namespace WPFCalculator
             Calculate(expression, true);
         }
 
-        public (bool, string) ReplaceSymbols(string expression)
+        public static (bool, string) ReplaceSymbols(string expression)
         {
             Dictionary<char, char> symbols = new()
             {
