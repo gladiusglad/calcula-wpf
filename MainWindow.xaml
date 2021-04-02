@@ -62,13 +62,13 @@
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Color}" Value="Normal">
-                                    <Setter Property="Foreground" Value="{StaticResource Normal}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource Normal}" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Color}" Value="Warning">
-                                    <Setter Property="Foreground" Value="{StaticResource Warning}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource Warning}" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Color}" Value="Unfocused">
-                                    <Setter Property="Foreground" Value="{StaticResource Unfocused}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource Unfocused}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -76,7 +76,7 @@
                 </TextBlock>
                 <TextBlock HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Foreground="{StaticResource Unfocused}"
+                    Foreground="{DynamicResource Unfocused}"
                     Text="{Binding CalculateTime}"/>
                 <TabControl Margin="0 60 0 0" BorderThickness="0,1,0,0">
                     <TabItem Header="History">

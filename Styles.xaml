@@ -3,4 +3,17 @@
     <SolidColorBrush x:Key="Normal" Color="{DynamicResource {x:Static SystemColors.WindowTextColorKey}}" />
     <SolidColorBrush x:Key="Warning">Red</SolidColorBrush>
     <SolidColorBrush x:Key="Unfocused" Color="{DynamicResource {x:Static SystemColors.ControlDarkColorKey}}" />
+    <SolidColorBrush x:Key="Background" Color="{DynamicResource {x:Static SystemColors.WindowColorKey}}" />
+    <SolidColorBrush x:Key="Border" Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}" />
+    <Style x:Key="HistoryEntry" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource Background}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Padding" Value="0,15" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
