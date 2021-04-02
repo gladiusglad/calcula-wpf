@@ -10,11 +10,6 @@
                   Title="Calculator"
                   Width="600" Height="400"
                   MinWidth="450" MinHeight="300">
-    <Window.Resources>
-        <SolidColorBrush x:Key="Normal">Black</SolidColorBrush>
-        <SolidColorBrush x:Key="Warning">Red</SolidColorBrush>
-        <SolidColorBrush x:Key="Unfocused">Silver</SolidColorBrush>
-    </Window.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid FocusManager.FocusedElement="{Binding ElementName=Input}">
             <Grid.RowDefinitions>
