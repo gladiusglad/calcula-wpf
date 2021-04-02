@@ -32,28 +32,5 @@ namespace CalculaWPF
             }
         }
 
-        private void FadeNormalCompleted(object sender, System.EventArgs e)
-        {
-            ChangeResultColor("Normal");
-        }
-
-        private void FadeWarningCompleted(object sender, System.EventArgs e)
-        {
-            ChangeResultColor("Warning");
-        }
-
-        private void FadeUnfocusedCompleted(object sender, System.EventArgs e)
-        {
-            ChangeResultColor("Unfocused");
-        }
-
-        private void ChangeResultColor(string colorResource)
-        {
-            if (!((SolidColorBrush)ResultText.Foreground).IsFrozen)
-            {
-                ((SolidColorBrush)ResultText.Foreground).Color = (Color)TryFindResource(colorResource);
-            }
-        }
-
     }
 }
