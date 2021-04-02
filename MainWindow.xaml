@@ -7,7 +7,7 @@
                   d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
                   WindowStartupLocation="CenterScreen"
                   mc:Ignorable="d"
-                  Title="Calculator"
+                  Title="Calcula"
                   Width="600" Height="400"
                   MinWidth="450" MinHeight="300">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
