@@ -146,10 +146,9 @@ namespace CalculaWPF
                 result = null;
             }
 
-            CalculateTime = $"{DateTimeOffset.Now.Subtract(startCalculate).TotalMilliseconds}ms";
-
             if (result == null)
             {
+                CalculateTime = "";
                 if (force)
                 {
                     SendInvalid();
@@ -162,6 +161,7 @@ namespace CalculaWPF
             }
             else
             {
+                CalculateTime = $"{DateTimeOffset.Now.Subtract(startCalculate).TotalMilliseconds}ms";
                 Color = MessageColor.Normal;
                 Result = result.Value.ToString("G");
                 lastValidResult = Result;
