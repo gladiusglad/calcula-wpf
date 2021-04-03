@@ -10,16 +10,24 @@ namespace CalculaWPF
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private const string InvalidMessage = "Please enter a valid expression";
+        private readonly Calculator calculator = new();
+
+        private bool lockResult, noChangeSinceLock;
         private string expression, result, previousExpression, lastValidResult, calculateTime;
         private MessageColor color = MessageColor.Unfocused;
-        private bool lockResult, noChangeSinceLock;
         private DateTimeOffset lastForceTime;
-        private readonly Calculator calculator = new();
 
         public MainWindowViewModel()
         {
             CalculateCommand = new RelayCommand(ForceCalculate, o => true);
             ClearCommand = new RelayCommand(ClearExpression, o => true);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public ICommand CalculateCommand { get; set; }
@@ -66,13 +74,6 @@ namespace CalculaWPF
                 color = value;
                 OnPropertyChanged();
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         private void SendInvalid()
@@ -172,29 +173,6 @@ namespace CalculaWPF
         public void ForceCalculate(object expression)
         {
             Calculate(expression, true);
-        }
-
-        public static (bool, string) ReplaceSymbols(string expression)
-        {
-            Dictionary<char, char> symbols = new()
-            {
-                ['-'] = '−',
-                ['*'] = '×',
-                ['/'] = '÷'
-            };
-
-            bool contains = false;
-
-            foreach (KeyValuePair<char, char> entry in symbols)
-            {
-                if (expression.Contains(entry.Key))
-                {
-                    contains = true;
-                    expression = expression.Replace(entry.Key, entry.Value);
-                }
-            }
-
-            return (contains, expression);
         }
 
         public void ClearExpression(object _)
