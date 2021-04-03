@@ -7,9 +7,13 @@ namespace CalculaWPF
     /// </summary>
     public partial class MainWindow
     {
+        readonly MainWindowViewModel vm;
+
         public MainWindow()
         {
-            DataContext = new MainWindowViewModel();
+            vm = new MainWindowViewModel();
+            vm.LoadHistory();
+            DataContext = vm;
 
             InitializeComponent();
         }
@@ -28,5 +32,9 @@ namespace CalculaWPF
             }
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            vm.SaveHistory();
+        }
     }
 }

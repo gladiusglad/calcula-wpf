@@ -9,7 +9,8 @@
                   mc:Ignorable="d"
                   Title="Calcula"
                   Width="600" Height="400"
-                  MinWidth="450" MinHeight="300">
+                  MinWidth="450" MinHeight="300"
+                  Closing="Window_Closing">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid FocusManager.FocusedElement="{Binding ElementName=Input}">
             <Grid.RowDefinitions>

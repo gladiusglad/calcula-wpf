@@ -1,15 +1,19 @@
 ﻿using CalculaCore;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Windows.Input;
 
 namespace CalculaWPF
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private const string InvalidMessage = "Please enter a valid expression";
+        private const string InvalidMessage = "Please enter a valid expression",
+            HistoryPath = "history.json";
         private readonly Calculator calculator = new();
 
         private bool lockResult, noChangeSinceLock;
@@ -188,6 +192,20 @@ namespace CalculaWPF
         public void SetExpression(object expression)
         {
             Expression = expression == null ? "" : (string)expression;
+        }
+
+        public void LoadHistory()
+        {
+            if (File.Exists(HistoryPath))
+            {
+                History.Clear();
+                JsonSerializer.Deserialize<List<HistoryEntry>>(File.ReadAllText(HistoryPath)).ForEach(e => History.Add(e));
+            }
+        }
+
+        public void SaveHistory()
+        {
+            File.WriteAllText(HistoryPath, JsonSerializer.Serialize(new List<HistoryEntry>(History)));
         }
     }
 }
