@@ -31,7 +31,8 @@
                     <TextBox x:Name="Input"
                                 Grid.Column="0" 
                                 AcceptsReturn="False"
-                                FontSize="20"
+                                Padding="3"
+                                FontSize="22"
                                 Text="{Binding Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 TextChanged="OnTextChanged">
                         <TextBox.InputBindings>
@@ -44,8 +45,10 @@
                             Grid.Column="1"
                             Padding="-1"
                             VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
                             FontFamily="Arial"
-                            FontSize="25"
+                            FontSize="30"
                             Content="="
                             Command="{Binding CalculateCommand}"
                             CommandParameter="{Binding Text, ElementName=Input}"
