@@ -1,6 +1,5 @@
 ﻿using CalculaCore;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -16,12 +15,6 @@ namespace CalculaWPF
         private string expression, result, previousExpression, lastValidResult, calculateTime;
         private MessageColor color = MessageColor.Unfocused;
         private DateTimeOffset lastForceTime;
-
-        public MainWindowViewModel()
-        {
-            CalculateCommand = new RelayCommand(ForceCalculate, o => true);
-            ClearCommand = new RelayCommand(ClearExpression, o => true);
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -74,6 +67,12 @@ namespace CalculaWPF
                 color = value;
                 OnPropertyChanged();
             }
+        }
+
+        public MainWindowViewModel()
+        {
+            CalculateCommand = new RelayCommand(ForceCalculate, o => true);
+            ClearCommand = new RelayCommand(ClearExpression, o => true);
         }
 
         private void SendInvalid()
