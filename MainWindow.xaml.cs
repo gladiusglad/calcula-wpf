@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace CalculaWPF
 {
@@ -8,12 +7,9 @@ namespace CalculaWPF
     /// </summary>
     public partial class MainWindow
     {
-        readonly MainWindowViewModel vm;
-
         public MainWindow()
         {
-            vm = new MainWindowViewModel();
-            DataContext = vm;
+            DataContext = new MainWindowViewModel();
 
             InitializeComponent();
         }
