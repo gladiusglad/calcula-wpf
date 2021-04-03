@@ -25,7 +25,7 @@ namespace CalculaWPF
         }
 
         public ICommand CalculateCommand { get; set; }
-        public ICommand ClearCommand { get; set; }
+        public ICommand SetExpressionCommand { get; set; }
         public ObservableCollection<HistoryEntry> History { get; } = new();
 
         public string Expression
@@ -74,7 +74,7 @@ namespace CalculaWPF
         public MainWindowViewModel()
         {
             CalculateCommand = new RelayCommand(ForceCalculate, o => true);
-            ClearCommand = new RelayCommand(ClearExpression, o => true);
+            SetExpressionCommand = new RelayCommand(SetExpression, o => true);
         }
 
         private void SendInvalid()
@@ -185,9 +185,9 @@ namespace CalculaWPF
             Calculate(expression, true);
         }
 
-        public void ClearExpression(object _)
+        public void SetExpression(object expression)
         {
-            Expression = "";
+            Expression = expression == null ? "" : (string)expression;
         }
     }
 }

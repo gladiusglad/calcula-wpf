@@ -34,7 +34,7 @@
                                 Text="{Binding Expression, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 TextChanged="OnTextChanged">
                         <TextBox.InputBindings>
-                            <KeyBinding Command="{Binding ClearCommand}"
+                            <KeyBinding Command="{Binding SetExpressionCommand}"
                                         Modifiers="Ctrl"
                                         Key="D" />
                         </TextBox.InputBindings>
@@ -94,7 +94,9 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button Style="{StaticResource HistoryEntry}">
+                                        <Button Style="{StaticResource HistoryEntry}"
+                                                Command="{Binding ElementName=HistoryEntries, Path=DataContext.SetExpressionCommand}"
+                                                CommandParameter="{Binding Expression}">
                                             <TextBlock TextWrapping="Wrap">
                                                 <Run Text="{Binding Expression}" Foreground="{StaticResource Unfocused}" />
                                                 <Run Text="=" Foreground="{StaticResource Unfocused}" />
