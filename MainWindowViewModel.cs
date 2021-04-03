@@ -1,5 +1,6 @@
 ﻿using CalculaCore;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -25,6 +26,7 @@ namespace CalculaWPF
 
         public ICommand CalculateCommand { get; set; }
         public ICommand ClearCommand { get; set; }
+        public ObservableCollection<HistoryEntry> History { get; } = new();
 
         public string Expression
         {
@@ -165,6 +167,15 @@ namespace CalculaWPF
                     lockResult = true;
                     lastForceTime = DateTimeOffset.Now;
                     noChangeSinceLock = true;
+
+                    if (exp != Result)
+                    {
+                        HistoryEntry entry = new(exp, Result);
+                        if (History.Count == 0 || History[^1] != entry)
+                        {
+                            History.Add(entry);
+                        }
+                    }
                 }
             }
         }

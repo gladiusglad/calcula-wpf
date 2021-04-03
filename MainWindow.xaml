@@ -15,7 +15,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="5*" />
-                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -80,8 +79,31 @@
                     Text="{Binding CalculateTime}"/>
                 <TabControl Margin="0 60 0 0" BorderThickness="0,1,0,0">
                     <TabItem Header="History">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            History WIP
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="550">
+                            <ItemsControl x:Name="HistoryEntries" ItemsSource="{Binding History}">
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ContentPresenter}">
+                                        <Setter Property="DockPanel.Dock"
+                                                Value="Bottom" />
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <DockPanel LastChildFill="False" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource HistoryEntry}">
+                                            <TextBlock TextWrapping="Wrap">
+                                                <Run Text="{Binding Expression}" Foreground="{StaticResource Unfocused}" />
+                                                <Run Text="=" Foreground="{StaticResource Unfocused}" />
+                                                <Run Text="{Binding Result}" />
+                                            </TextBlock>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Compare">
