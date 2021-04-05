@@ -11,6 +11,7 @@
     <RootNamespace>CalculaWPF</RootNamespace>
     <UseWPF>true</UseWPF>
     <Version>1.0.0</Version>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>
