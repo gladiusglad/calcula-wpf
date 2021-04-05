@@ -1,10 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <ItemGroup>
-    <Reference Include="calcula-core">
-      <HintPath>..\calcula-core\bin\Release\net5.0\calcula-core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
+	
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -13,5 +8,9 @@
     <Version>1.0.0</Version>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="calcula-core" Version="1.1.0" />
+  </ItemGroup>
 
 </Project>
